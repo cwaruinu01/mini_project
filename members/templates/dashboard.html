@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    {% load static %}
+
+<div>
+    <img src=" {% static 'images/hybridoffice.jpeg' %}" alt="hybrid office image" class="img-responsive">
+</div>
+
+  <h2 class="mb-4">Dashboard</h2>
+
+  <form action="/adduser/" type="POST">
+      {% csrf_token %}
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="age">Age</label>
+        <input type="number" class="form-control" id="age" name="age" placeholder="Enter age">
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <div class="mt-4">
+    <h3>Dashboard Table</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Age</th>
+        </tr>
+      </thead>
+      <tbody id="dashboardTableBody">
+      {% for user in myuser %}
+      <tr>
+          <td >{{user.name }}</td>
+          <td >{{user.email }}</td>
+          <td >{{user.age}}</td>
+        </tr>
+      {% endfor %}
+        <!-- Table content will be dynamically added here -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
