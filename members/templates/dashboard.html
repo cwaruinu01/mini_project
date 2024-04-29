@@ -10,15 +10,8 @@
 <body>
 
 <div class="container mt-5">
-    {% load static %}
-
-<div>
-    <img src=" {% static 'images/hybridoffice.jpeg' %}" alt="hybrid office image" class="img-responsive">
-</div>
-
-  <h2 class="mb-4">Dashboard</h2>
-
-  <form action="/adduser" method="POST">
+    <h2 class="mb-4">Dashboard</h2>
+    <form action="/adduser" method="POST">
       {% csrf_token %}
     <div class="form-row">
       <div class="form-group col-md-4">
